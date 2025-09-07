@@ -46,9 +46,9 @@ do{
             alert(`Needed speed is ${Math.round(s / t * 10) / 10} km/h`)
             break
         }
-        else{
+        else
             alert("Invalid value, try again")
-        }
+        
     }
     if (!confirm("Try again?"))
         break
@@ -87,9 +87,9 @@ do {
             files_amount = Math.floor(flashdriveSizeMB / FILE_SIZE)
             alert(`You can store ${files_amount} files on the flashdrive`)
             break
-        } else {
+        } else 
             alert("Please enter a valid positive number for flash drive size.");
-        }
+        
     }
     if (!confirm("Try again?"))
         break
