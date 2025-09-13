@@ -271,15 +271,14 @@ while (true) {
             alert(`Number is smaller than ${N}`)
             break
     }
-    if(!gameState){
-        if(!confirm("Play again?")) break
-        else alert("Think of a number")
-    }
-    
-
     if (min > max) {
         alert("Invalid range")
         break
+    }
+    
+    if(!gameState){
+        if(!confirm("Play again?")) break
+        else alert("Think of a number")
     }
 }
 
