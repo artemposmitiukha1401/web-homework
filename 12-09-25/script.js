@@ -275,7 +275,7 @@ while (true) {
         alert("Invalid range")
         break
     }
-    
+
     if(!gameState){
         if(!confirm("Play again?")) break
         else alert("Think of a number")
