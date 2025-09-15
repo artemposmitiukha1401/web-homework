@@ -54,7 +54,7 @@
 
 // function FindMax(){
 //     const MAX_LENGTH = 5
-//     if (arguments.length > 5){
+//     if (arguments.length > MAX_LENGTH){
 //         alert("To many numbers")
 //         return 0
 //     }
