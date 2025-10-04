@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="markerText"></p>
+    <script>
+        class Marker {
+            #color = "";
+            #fullness = 0;
+            constructor(color, fullness) {
+                this.#color = color;
+
+                if (fullness > 100) this.#fullness = 100;
+                else if (fullness < 0) this.#fullness = 0
+                else this.#fullness = fullness
+
+            }
+
+            get color() { return this.#color; }
+            get fullness() { return this.#fullness; }
+            
+            Print(text) {
+                const INK_PER_CHAR = 0.5;
+                let output = document.getElementById("markerText");
+                let consumeAmount = 0;
+                for (let char = 0; char < text.length; char++) {
+                    if (text[char] != " ") consumeAmount += INK_PER_CHAR;
+                }
+                
+                if(this.#fullness >= consumeAmount) {
+                    output.style.color = this.#color;
+                    output.textContent += text;
+                    this.#fullness -= consumeAmount;
+                }
+                else console.log("Not enough ink!")
+            }
+            Refill(refill_amount){
+                if(refill_amount < 0){
+                    console.log("Invalid amount of ink")
+                    return;
+                }
+                if(this.#fullness + refill_amount > 100){
+                    this.#fullness = 100;
+                    return;
+                }
+                this.#fullness += refill_amount;
+
+            }
+        }
+        test_marker = new Marker("red", 40);
+        test_marker.Print("Hello world");
+        test_marker.Refill(154);
+        console.log(test_marker.fullness)
+    </script>
+</body>
+
+</html>
