@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("editText").style.display = "none";
+        });
+    </script>
+</head>
+<body>
+    <!-- Это еще в процессе -->
+    <style>
+        div{
+            width: 50rem;
+        }
+        textarea{
+            width: 50rem;
+            height: 50rem;
+            max-width: 50rem;
+            max-height: fit-content;
+        }
+        </style>
+        <p>Ctrl + E to edit | Ctrl + S to save</p>
+    <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum ratione, dicta, sunt fugiat corporis ipsam error eligendi magni porro reprehenderit tenetur id dolore. Minus ab debitis, officiis optio sequi quo.
+    Illo soluta repudiandae nemo similique debitis facilis numquam suscipit ea ipsum, nam, a adipisci fugiat placeat earum quo, labore dolorum? Minus sequi praesentium, tempore soluta sint ullam! Dolor, molestias cupiditate.
+    Nemo excepturi officia et eum fugit asperiores deserunt. Deserunt sunt fugiat modi laudantium beatae, dolor maiores tenetur facilis. Harum laboriosam enim at quia iure, aliquid impedit? Molestiae ducimus amet mollitia!
+    Molestias, reprehenderit iusto. Neque facilis, nobis officiis dolor nam delectus quod. Perferendis atque eveniet quisquam, reprehenderit perspiciatis sunt eos? Maxime minima, iure delectus inventore laboriosam commodi natus provident nihil? Iste.
+    Mollitia incidunt, ullam distinctio aliquid, ipsa maiores repudiandae velit est ad veritatis, quisquam iusto rerum? Provident excepturi debitis perspiciatis impedit quisquam in quo aperiam. Recusandae, temporibus. Incidunt enim vel voluptatem.
+    Voluptatem mollitia a ad nisi quis blanditiis optio doloremque atque, officiis dolorem praesentium commodi vel quaerat, vitae ducimus minima nulla recusandae iure? Iusto modi illum voluptatem! Laudantium voluptatibus quas rerum.
+    Asperiores architecto, vitae, veritatis doloribus nihil dicta ipsum, blanditiis harum iste assumenda itaque cum neque quibusdam dolorum accusamus nulla esse nobis placeat eaque vel totam unde alias cumque! Nihil, officia.
+    Exercitationem natus animi esse, earum eaque voluptates ut amet! Fuga quisquam qui doloremque possimus, est numquam expedita fugit, distinctio sint minima nisi nostrum accusantium blanditiis ut magni delectus earum repellat?
+    Deserunt optio dolor, maiores voluptate quaerat dignissimos est temporibus quam nesciunt qui commodi, perferendis adipisci eius ratione neque accusantium fugit. Iure corporis dignissimos autem, exercitationem repudiandae repellendus ipsa ducimus omnis.
+    Fuga maiores quibusdam, fugit minima qui delectus velit adipisci a odio, eius necessitatibus! Distinctio fugiat alias, reiciendis, nihil exercitationem quam, nemo voluptates illum mollitia sint magnam magni impedit sit in?
+    Id velit earum quam numquam commodi sit aut placeat tempore nostrum, labore excepturi neque maxime nisi perspiciatis animi cupiditate quibusdam beatae soluta fugiat delectus. Ab eligendi accusantium neque numquam non.
+    Earum eligendi error unde sequi rerum, nulla corporis dignissimos modi. Delectus, saepe rem. Tenetur cumque molestias vel ut praesentium consequuntur amet? Eum eius sequi sed suscipit voluptatibus voluptatum iure distinctio?</div>
+
+    <textarea name="text" id="editText"></textarea>
+
+    <script>
+        let textEditor = document.getElementById("editText");
+        let textToEdit = document.querySelector("div");
+
+        document.addEventListener("keydown", function(e){
+            if(e.ctrlKey && e.key == "e"){
+                e.preventDefault();
+                textEditor.style.display = "block";
+                textToEdit.style.display = "none";
+                textEditor.textContent = textToEdit.textContent;
+            }
+        });
+    </script>
+</body>
+</html>
