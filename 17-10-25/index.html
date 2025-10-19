@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>\
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+ 
+    <div id="gallery">
+        <img src="" alt="Main image" id="mainImage">
+        <p id="author"></p>
+        <p id="quote"></p>
+        <div id="buttons">
+            <a href="#" id="back">
+                <img src="./images/arrow-left.svg" alt="" class="icons">
+            </a>
+            <a href="#" id="next">
+                <img src="./images/arrow-right.svg" alt="" class="icons">
+            </a>
+        </div>
+    </div>
+    <script>
+        class Quote {
+            #img = "";
+            #quoteText = "";
+            #author = "";
+            #color = ""
+
+            constructor(img, quoteText, author, color) {
+                this.#img = img;
+                this.#quoteText = quoteText;
+                this.#author = author;
+                this.#color = color
+            }
+
+            get img() { return this.#img; }
+            get quoteText() { return this.#quoteText; }
+            get author() { return this.#author; }
+            get color() { return this.#color; }
+        }
+        const quotes = [
+            new Quote("./images/img1.jpg", "\"The future belongs to those who believe in the beauty of their dreams.\"", "Eleanor Roosevelt", "#264653"),
+            new Quote("./images/img2.jpg", "\"Success is not final, failure is not fatal: it is the courage to continue that counts.\"", "Winston Churchill", "#2a9d8f"),
+            new Quote("./images/img3.jpg", "\"In the middle of every difficulty lies opportunity.\"", "Albert Einstein", "#f4a261"),
+            new Quote("./images/img4.jpg", "\"Do not wait for leaders; do it alone, person to person.\"", "Mother Teresa", "#e76f51"),
+            new Quote("./images/img5.jpg", "\"The only limit to our realization of tomorrow is our doubts of today.\"", "Franklin D. Roosevelt" , "#023047")
+        ];
+
+        let currentQuote = 0;
+        let galleryImg = document.getElementById("mainImage");
+        let quoteText = document.getElementById("quote")
+        let quoteAuthor = document.getElementById("author")
+        let nextBtn = document.getElementById("next")
+        let gallery = document.getElementById("gallery")
+        let backBtn = document.getElementById("back")
+
+        nextBtn.addEventListener("click", function(){
+            currentQuote++
+            if(currentQuote > 5) currentQuote = 0
+            changeQuote();
+        });
+        backBtn.addEventListener("click", function(){
+            currentQuote--
+            if(currentQuote < 0) currentQuote = quotes.length - 1;
+            changeQuote();
+        })
+
+        function changeQuote() {
+        
+            galleryImg.src = quotes[currentQuote].img;
+            quoteText.textContent = quotes[currentQuote].quoteText;
+            quoteAuthor.textContent = quotes[currentQuote].author;
+            gallery.style.backgroundColor = quotes[currentQuote].color;
+        
+
+        }
+        changeQuote();
+
+    </script>
+</body>
+
+</html>
