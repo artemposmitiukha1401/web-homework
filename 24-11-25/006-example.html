@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+
+    <style>
+        .completed {
+            color: green;
+        }
+
+        .incomplete {
+            color: red;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <button id="loadButton">Загрузить список задач</button> <span id="loader" style="display: none;">Загрузка...</span>
+    <div id="todoList">
+    </div>
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Completed</th>
+        </tr>
+    </thead>
+    <tbody id="tasks">
+    </tbody>
+    </table>
+
+
+    <script>
+        let url = "https://jsonplaceholder.typicode.com/todos";
+        let loadButton = document.querySelector("#loadButton");
+        let loader = document.querySelector("#loader");
+        let todoList = document.querySelector("#tasks");
+        let table = document.querySelector("table");
+
+        loadButton.addEventListener("click", function () {
+            todoList.innerHTML = "";
+            showLoader();
+            fetch(url)
+                .then(response => response.json())
+                .then(json => renderList(json))
+                .finally(hideLoader);
+        });
+
+        function showLoader() {
+            loader.style.display = "inline";
+        }
+
+        function hideLoader() {
+            loader.style.display = "none";
+        }
+
+        function renderList(list) {
+            list.forEach(element => {
+                let tr = document.createElement("tr");
+
+                let id = document.createElement("td");
+                id.textContent = element.id;
+
+                let title = document.createElement("td");
+                title.textContent = element.title;
+
+                let isCompleted = document.createElement("td");
+                if (element.completed) isCompleted.textContent = "✅"
+                else isCompleted.textContent = "❌"
+
+                if (element.completed) isCompleted.classList.add("completed");
+                else isCompleted.classList.add("incomplete");
+                
+                tr.appendChild(id);
+                tr.appendChild(title);
+                tr.appendChild(isCompleted);
+
+                tasks.appendChild(tr);
+            });
+        }
+    </script>
+</body>
+
+</html>
